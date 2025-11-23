@@ -24,12 +24,18 @@ class OnboardingViewModel {
         }
         
         timerTask = DispatchWorkItem(block: {
-//            self.goNext
+            self.goNext
         })
-        
         
     }
     
-    
+    func goNext() {
+        if currentSlide < items.count-1 {
+            currentSlide += 1
+            startProgress()
+        } else {
+            print("complete onboarding")
+        }
+    }
     
 }
