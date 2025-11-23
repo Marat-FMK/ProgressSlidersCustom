@@ -11,10 +11,25 @@ import Combine
 @Observable
 class OnboardingViewModel {
     
-    let items: [OnboardingItem] = []
+    let items: [OnboardingItem] = OnboardingItem.example
+    
     @Published var currentSlide = 0
     @Published var progress: CGFloat = 0
     @Published var timerTask: DispatchWorkItem?
+    
+    func startProgress() {
+        progress = 0
+        withAnimation(.linear(duration: 3)) {
+            progress = 1
+        }
+        
+        timerTask = DispatchWorkItem(block: {
+//            self.goNext
+        })
+        
+        
+    }
+    
     
     
 }
