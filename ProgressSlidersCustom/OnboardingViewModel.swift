@@ -8,6 +8,8 @@
 import SwiftUI
 import Combine
 
+
+// // // // // // ErrorNil
 @Observable
 class OnboardingViewModel {
     
