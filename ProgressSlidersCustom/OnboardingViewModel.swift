@@ -24,9 +24,12 @@ class OnboardingViewModel {
         }
         
         timerTask = DispatchWorkItem(block: {
-            self.goNext
+            self.goNext()
         })
         
+        guard let timerTask else { return }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: timerTask)
     }
     
     func goNext() {
