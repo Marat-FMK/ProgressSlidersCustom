@@ -14,7 +14,7 @@ struct OnboardingView: View {
     var body: some View {
             VStack {
                 HStack {
-                    ProgressView()
+                    progressView
                 }
                 .onAppear {
                     viewModel.startProgress()
@@ -28,7 +28,7 @@ struct OnboardingView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 Spacer()
                 
-                Image(systemName: "x.mark")
+                Image(systemName: "xmark")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 100, height: 100)
