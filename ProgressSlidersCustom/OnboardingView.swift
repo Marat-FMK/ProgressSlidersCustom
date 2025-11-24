@@ -12,36 +12,36 @@ struct OnboardingView: View {
     @StateObject var viewModel = OnboardingViewModel()
     
     var body: some View {
-            VStack {
-                HStack {
-                    progressView
-                }
-                .onAppear {
-                    viewModel.startProgress()
-                }
-                VStack(alignment: .leading) {
-                    Text(viewModel.screenInfo[viewModel.currentSlide]["title"] ?? "")
-                        .font(.title)
-                    
-                    Text(viewModel.screenInfo[viewModel.currentSlide]["text"] ?? "")
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                Spacer()
-                
-                Image(systemName: "xmark")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 100, height: 100)
-                
-                Spacer()
-                
-                Button {
-                    viewModel.goNext()
-                } label: {
-                    Text("next")
-                }
+        VStack {
+            HStack {
+                progressView
             }
-            .padding()
+            .onAppear {
+                viewModel.startProgress()
+            }
+            VStack(alignment: .leading) {
+                Text(viewModel.screenInfo[viewModel.currentSlide]["title"] ?? "")
+                    .font(.title)
+                
+                Text(viewModel.screenInfo[viewModel.currentSlide]["text"] ?? "")
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            Spacer()
+            
+            Image(systemName: "xmark")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 100, height: 100)
+            
+            Spacer()
+            
+            Button {
+                viewModel.goNext()
+            } label: {
+                Text("next")
+            }
+        }
+        .padding()
     }
 }
 
