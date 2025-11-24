@@ -6,7 +6,14 @@
 //
 
 import Foundation
+import SwiftUI
 
-struct ProgressSlider {
-    
-}
+//struct ProgressSliders: View {
+////    @Binding var curentSlide: Int
+//    let items: [OnboardingItem]
+//    
+//    var body: some View {
+//        
+//        
+//    }
+//}
