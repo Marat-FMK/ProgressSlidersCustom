@@ -9,17 +9,25 @@ import SwiftUI
 import Combine
 
 
-// // // // // // ErrorNil
-@Observable
-class OnboardingViewModel {
+// // // // // // ErrorNil example
+
+class OnboardingViewModel: ObservableObject {
     
-    let items: [OnboardingItem] = OnboardingItem.example
+//    let items: [OnboardingItem] = OnboardingItem.example
+    
+    let screenInfo: [ [ String : String ]] = [
+        ["title": "hello", "text": " helo helo ----- - - - - -- helo ", "image": "hello" ],
+        ["title": "navigation", "text": "navigation -- - -- -- - nav ", "image": "navigation" ],
+        ["title": "search", "text": " search ----- - - - - --search ", "image": "search" ],
+        ["title": "security", "text": " security ----- - - - - -- security ", "image": "security" ],
+    ]
     
     @Published var currentSlide = 0
     @Published var progress: CGFloat = 0
     @Published var timerTask: DispatchWorkItem?
     
     func startProgress() {
+        timerTask?.cancel()
         progress = 0
         withAnimation(.linear(duration: 3)) {
             progress = 1
@@ -35,7 +43,8 @@ class OnboardingViewModel {
     }
     
     func goNext() {
-        if currentSlide < items.count-1 {
+        timerTask?.cancel()
+        if currentSlide < screenInfo.count-1 {
             currentSlide += 1
             startProgress()
         } else {
