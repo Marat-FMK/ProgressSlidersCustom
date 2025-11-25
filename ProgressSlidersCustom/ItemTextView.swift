@@ -12,7 +12,7 @@ struct ItemTextView: View {
     let description: String
     
     var body: some View {
-
+        
         VStack (alignment: .leading, spacing: 20) {
             Text(title)
                 .font(.system(size: 40))

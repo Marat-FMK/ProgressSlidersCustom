@@ -45,6 +45,5 @@ struct ProgressSlidersView: View {
         .onAppear {
             startProgress()
         }
-        
     }
 }

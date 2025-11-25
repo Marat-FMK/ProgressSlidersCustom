@@ -13,16 +13,11 @@ import Combine
 
 class OnboardingViewModel: ObservableObject {
     
-    let items: [OnboardingItem] = OnboardingItem.example
-    
-//    let screenInfo: [ [ String : String ]] = [ ["title": "hello", "text": "helo ", "image": "pic1" ],
-//                                               ["title": "navigation", "text": "navigation -- - -- -- - nav ", "image": "pic2" ],
-//                                               ["title": "search", "text": "search ----- - - - - --search ", "image": "pic3" ],
-//                                               ["title": "security", "text": "security ----- - - - - -- security ", "image": "pic4" ] ]
-    
     @Published var currentSlide = 0
     @Published var progress: CGFloat = 0
     @Published var timerTask: DispatchWorkItem?
+    
+    let items: [OnboardingItem] = OnboardingItem.example
     
     func startProgress() {
         timerTask?.cancel()
@@ -49,5 +44,4 @@ class OnboardingViewModel: ObservableObject {
             print("complete onboarding")
         }
     }
-    
 }
