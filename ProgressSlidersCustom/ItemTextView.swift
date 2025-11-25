@@ -17,11 +17,14 @@ struct ItemTextView: View {
             Text(title)
                 .font(.system(size: 40))
                 .foregroundStyle(.white)
+                .lineLimit(1)
             
             Text(description)
                 .font(.system(size: 25))
                 .foregroundStyle(.white)
+                .multilineTextAlignment(.leading)
+                .fixedSize(horizontal: false, vertical: true)
         }
-        .frame(maxWidth: .infinity)
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
