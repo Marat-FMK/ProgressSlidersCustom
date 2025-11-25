@@ -12,42 +12,47 @@ struct OnboardingView: View {
     @StateObject var viewModel = OnboardingViewModel()
     
     var body: some View {
-        VStack {
-            HStack {
-                progressView
-            }
-            .onAppear {
-                viewModel.startProgress()
-            }
-            VStack(alignment: .leading) {
-                Text(viewModel.screenInfo[viewModel.currentSlide]["title"] ?? "")
-                    .font(.title)
-                
-                Text(viewModel.screenInfo[viewModel.currentSlide]["text"] ?? "")
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            Spacer()
-            
-            Image(systemName: "xmark")
+        ZStack {
+            Image(viewModel.screenInfo[viewModel.currentSlide]["image"] ?? "pic1")
                 .resizable()
-                .scaledToFit()
-                .frame(width: 100, height: 100)
+                .ignoresSafeArea()
             
-            Spacer()
-            
-            Button {
-                viewModel.goNext()
-            } label: {
-                Text("next")
+            VStack {
+                
+                progressView
+                
+                
+                VStack {
+                    ItemTextView(title: viewModel.screenInfo[viewModel.currentSlide]["title"] ?? "", description: viewModel.screenInfo[viewModel.currentSlide]["text"] ?? "")
+                    
+                    
+                    Button {
+                        viewModel.goNext()
+                    } label: {
+                        Text("next slide")
+                            .font(.system(size: 40))
+                    }
+                    .buttonStyle(.glass)
+                    .padding(.vertical, 30)
+                    
+                    
+                    
+                }
+                .frame(maxWidth: .infinity)
+                .background {
+                    Rectangle()
+                        .foregroundStyle(Gradient(colors: [.black.opacity(0.1), .black.opacity(0.9)]))
+                }
             }
+            .ignoresSafeArea()
         }
-        .padding()
     }
 }
 
 extension OnboardingView {
     var progressView: some View {
         
+        HStack {
         ForEach(viewModel.screenInfo.indices, id: \.self) { slide in
             GeometryReader { proxy in
                 ZStack(alignment: .leading) {
@@ -72,7 +77,10 @@ extension OnboardingView {
                 }
             }
         }
-        
+    }
+        .onAppear {
+            viewModel.startProgress()
+        }
     }
 }
 
