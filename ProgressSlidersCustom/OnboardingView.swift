@@ -13,19 +13,19 @@ struct OnboardingView: View {
     
     var body: some View {
         ZStack {
-            Image(viewModel.screenInfo[viewModel.currentSlide]["image"] ?? "pic1")
+            Image(viewModel.items[viewModel.currentSlide].image)
                 .resizable()
             
             VStack(alignment: .leading) {
                 
-                progressView
+                ProgressSlidersView(progress: $viewModel.progress, currentSlide: $viewModel.currentSlide, items: viewModel.items, startProgress: viewModel.startProgress)
                     .padding(.top, 70)
                 
                 Spacer()
                 
                 VStack(spacing: 30) {
                     HStack {
-                        ItemTextView(title: viewModel.screenInfo[viewModel.currentSlide]["title"] ?? "", description: viewModel.screenInfo[viewModel.currentSlide]["text"] ?? "")
+                        ItemTextView(title: viewModel.items[viewModel.currentSlide].title, description: viewModel.items[viewModel.currentSlide].description)
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     
@@ -43,46 +43,11 @@ struct OnboardingView: View {
                 .padding(.bottom, 70)
                 .background {
                     Rectangle()
-                        .foregroundStyle(Gradient(colors: [.clear, .black.opacity(0.9)]))
+                        .foregroundStyle(Gradient(colors: [.clear, .black.opacity(0.7)]))
                 }
             }
         }
         .ignoresSafeArea()
-    }
-}
-
-
-extension OnboardingView {
-    var progressView: some View {
-        
-        HStack {
-            ForEach(viewModel.screenInfo.indices, id: \.self) { slide in
-                GeometryReader { proxy in
-                    ZStack(alignment: .leading) {
-                        Capsule()
-                            .fill(.gray)
-                        if slide < viewModel.currentSlide {
-                            Capsule()
-                                .fill(.black)
-                                .frame(width: proxy.size.width)
-                        } else if slide == viewModel.currentSlide {
-                            Capsule()
-                                .fill(.black)
-                                .frame(width: proxy.size.width * self.viewModel.progress, alignment: .leading)
-                        }
-                    }
-                    .onTapGesture {
-                        viewModel.currentSlide = slide
-                        viewModel.startProgress()
-                    }
-                }
-            }
-        }
-        .frame(height: 5)
-        .padding(.horizontal, 20)
-        .onAppear {
-            viewModel.startProgress()
-        }
     }
 }
 
