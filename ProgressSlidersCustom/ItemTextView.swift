@@ -7,19 +7,20 @@
 
 import SwiftUI
 
-struct ItemTextView {
+struct ItemTextView: View {
     let title: String
     let description: String
     
     var body: some View {
+
         VStack (alignment: .leading, spacing: 20) {
             Text(title)
-                .font(.largeTitle)
-                .foregroundStyle(.black)
+                .font(.system(size: 40))
+                .foregroundStyle(.white)
             
             Text(description)
-                .font(.default)
-                .foregroundStyle(.gray)
+                .font(.system(size: 25))
+                .foregroundStyle(.white)
         }
     }
 }
