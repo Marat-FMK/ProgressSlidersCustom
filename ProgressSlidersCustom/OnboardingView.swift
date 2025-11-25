@@ -15,37 +15,42 @@ struct OnboardingView: View {
         ZStack {
             Image(viewModel.screenInfo[viewModel.currentSlide]["image"] ?? "pic1")
                 .resizable()
-                .ignoresSafeArea()
             
-            VStack {
+            VStack(alignment: .leading) {
                 
                 progressView
+                    .padding(.top, 70)
                 
                 Spacer()
                 
-                VStack {
-                    ItemTextView(title: viewModel.screenInfo[viewModel.currentSlide]["title"] ?? "", description: viewModel.screenInfo[viewModel.currentSlide]["text"] ?? "")
-                    
-                    Button {
-                        viewModel.goNext()
-                    } label: {
-                        Text("next slide")
-                            .font(.system(size: 40))
+                VStack(spacing: 30) {
+                    HStack {
+                        ItemTextView(title: viewModel.screenInfo[viewModel.currentSlide]["title"] ?? "", description: viewModel.screenInfo[viewModel.currentSlide]["text"] ?? "")
                     }
-                    .buttonStyle(.glass)
-                    .padding(.vertical, 30)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    HStack {
+                        Button {
+                            viewModel.goNext()
+                        } label: {
+                            Text("next slide")
+                                .font(.system(size: 40))
+                        }
+                        .buttonStyle(.glass)
+                    }
                 }
-                .frame(maxWidth: .infinity)
+                .padding(.horizontal, 20)
+                .padding(.bottom, 70)
                 .background {
                     Rectangle()
                         .foregroundStyle(Gradient(colors: [.clear, .black.opacity(0.9)]))
                 }
             }
-            .padding(.top, 70)
-            .ignoresSafeArea()
         }
+        .ignoresSafeArea()
     }
 }
+
 
 extension OnboardingView {
     var progressView: some View {
