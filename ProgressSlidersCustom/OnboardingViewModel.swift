@@ -16,10 +16,10 @@ class OnboardingViewModel: ObservableObject {
 //    let items: [OnboardingItem] = OnboardingItem.example
     
     let screenInfo: [ [ String : String ]] = [
-        ["title": "hello", "text": " helo helo ----- - - - - -- helo ", "image": "pic1" ],
+        ["title": "hello", "text": "helo ", "image": "pic1" ],
         ["title": "navigation", "text": "navigation -- - -- -- - nav ", "image": "pic2" ],
-        ["title": "search", "text": " search ----- - - - - --search ", "image": "pic3" ],
-        ["title": "security", "text": " security ----- - - - - -- security ", "image": "pic4" ],
+        ["title": "search", "text": "search ----- - - - - --search ", "image": "pic3" ],
+        ["title": "security", "text": "security ----- - - - - -- security ", "image": "pic4" ],
     ]
     
     @Published var currentSlide = 0
