@@ -22,5 +22,6 @@ struct ItemTextView: View {
                 .font(.system(size: 25))
                 .foregroundStyle(.white)
         }
+        .frame(maxWidth: .infinity)
     }
 }
