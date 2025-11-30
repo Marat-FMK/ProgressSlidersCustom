@@ -48,7 +48,7 @@ struct OnboardingView: View {
         }
         .ignoresSafeArea()
     }
-}//
+}
 
 #Preview {
     OnboardingView()
