@@ -46,4 +46,4 @@ struct ProgressSlidersView: View {
             startProgress()
         }
     }
-}
+}//
