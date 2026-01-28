@@ -11,11 +11,11 @@ import SwiftUI
 struct ProgressSlidersCustomApp: App {
     var body: some Scene {
         WindowGroup {
-            OnboardingView()// 
+            OnboardingView()
         }
     }
 }
 
 
-
+//
 
