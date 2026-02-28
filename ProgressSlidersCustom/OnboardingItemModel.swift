@@ -19,5 +19,4 @@ struct OnboardingItem: Identifiable {
                           OnboardingItem(title: "Search", description: "написали поиск для запросов", image: "pic4")
     ]
 }
-
-
+//
