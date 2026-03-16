@@ -20,4 +20,4 @@ struct OnboardingItem: Identifiable {
     ]
 }
 
-//
+
